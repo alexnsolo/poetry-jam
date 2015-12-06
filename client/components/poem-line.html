@@ -1,0 +1,29 @@
+<div class="poem-line-component">
+	<div class="line" ng-switch="line.type" ng-class="{'is-new': !line.isFinalized}">
+		<div ng-switch-when="text">
+			<div class="line-text">
+				<span>{{line.text}}</span>
+				<span ng-hide="line.text">New Line</span>
+			</div>
+			<div class="line-suggestions" ng-if="!line.isFinalized">
+				<div class="line-suggestion" ng-repeat="suggestion in line.suggestions">
+					<div class="suggestion-text">{{suggestion.text}}</div>
+					<button class="choose-suggestion-btn"
+							ng-click="chooseSuggestion(line, suggestion)"
+							ng-show="isPoemOwner()">
+						Choose
+					</button>
+				</div>
+				<div class="new-suggestion">
+					<input class="new-suggestion-text"
+							type="text"
+							ng-model="line.$newSuggestionText"
+							on-enter="addSuggestion(line)"
+							placeholder="Make a suggestion">
+				</div>
+			</div>
+		</div>
+
+		<div class="line-break" ng-switch-when="break"></div>
+	</div>
+</div>

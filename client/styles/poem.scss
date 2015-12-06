@@ -36,50 +36,6 @@
 
 	.poem-lines {
 		margin-top: 20px;
-
-		.line {
-
-			&.is-new {
-				.line-text {
-					color: rgba($blue, 0.3);
-				}
-			}
-
-			.line-text {
-				font-size: 20px;
-			}
-
-			.line-break {
-				height: 17px;
-				width: 100%;
-			}
-
-			.line-suggestions {
-				margin-top: 5px;
-				margin-left: 20px;
-
-				.line-suggestion {
-					position: relative;
-					min-height: 14px;
-
-					.choose-suggestion-btn {
-						position: absolute;
-						top: 0px;
-						right: 0px;
-						padding: 2px 4px;
-						font-size: 10px;
-					}
-				}
-
-				input.new-suggestion-text {
-					margin-top: 3px;
-					width: 300px;
-					font-size: 14px;
-					line-height: 14px;
-					color: $blue;
-				}
-			}
-		}
 	}
 
 	.poem-controls {
