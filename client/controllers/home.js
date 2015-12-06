@@ -9,6 +9,7 @@ angular.module('poetry-jam').controller('HomeCtrl', function($scope, $rootScope,
 
 		var poem = {};
 		poem.name = '';
+		poem.isFinalized = false;
 		poem.author = $rootScope.currentUser.emails[0].address;
 		poem.ownerId = $rootScope.currentUser._id;
 		poem.createdAt = Date.now();
