@@ -1,0 +1,77 @@
+@mixin bp-large {
+	@media only screen and (max-width: 60em) {
+		@content;
+	}
+}
+
+@mixin bp-medium {
+	@media only screen and (max-width: 40em) {
+		@content;
+	}
+}
+
+@mixin bp-small {
+	@media only screen and (max-width: 30em) {
+		@content;
+	}
+}
+
+@mixin css3-prefix($property, $value) {
+	-webkit-#{$property}: #{$value};
+	 -khtml-#{$property}: #{$value};
+		 -moz-#{$property}: #{$value};
+			-ms-#{$property}: #{$value};
+			 -o-#{$property}: #{$value};
+					#{$property}: #{$value};
+}
+
+@mixin no-select {
+	@include css3-prefix('user-select', none);
+}
+
+@mixin text-shadow($x: 2px, $y: 2px, $blur: 5px, $color: rgba(0,0,0,.4)) {
+	text-shadow: $x $y $blur $color;
+}
+
+@mixin border-radius($radius: 5px) {
+		@include css3-prefix('border-radius', $radius);
+}
+
+@mixin box-shadow($x: 2px, $y: 2px, $blur: 5px, $color: rgba(0,0,0,.4), $inset: "") {
+	@if ($inset != "") {
+		@include css3-prefix('box-shadow', $inset $x $y $blur $color);
+	} @else {
+		@include css3-prefix('box-shadow', $x $y $blur $color);
+	}
+}
+
+@mixin rotate($deg: 0, $m11: 0, $m12: 0, $m21: 0, $m22: 0) {
+	@include css3-prefix('transform', rotate($deg + deg));
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=#{$m11}, M12=#{$m12}, M21=#{$m21}, M22=#{$m22}, sizingMethod='auto expand');
+		zoom: 1;
+}
+
+@mixin opacity($opacity: 0.5) {
+		$opacityMultiplied: ($opacity * 100);
+
+		filter: alpha(opacity=$opacityMultiplied);
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $opacityMultiplied + ")";
+		@include css3-prefix('opacity', $opacity);
+}
+
+@mixin scale($params) {
+	@include css3-prefix('transform', scale($params));
+}
+
+@mixin translateX($params) {
+	@include css3-prefix('transform', translateX($params));
+}
+
+@mixin transition($properties...) {
+	@if length($properties) >= 1 {
+		@include css3-prefix('transition', $properties);
+	}
+	@else {
+		@include css3-prefix('transition',	"all 0.2s ease-in-out 0s");
+	}
+}

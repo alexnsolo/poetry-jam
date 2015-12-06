@@ -1,0 +1,100 @@
+@import "_mixins";
+@import "_variables";
+
+.poem-view {
+	position: relative;
+
+	.back-link {
+		position: absolute;
+		top: -10px;
+		right: -10px;
+		font-weight: normal;
+		font-size: 12px;
+	}
+
+	.poem-name {
+		font-size: 40px;
+		font-weight: bold;
+		color: $blue;
+		font-family: 'Damion', cursive;
+		font-weight: 100;
+		letter-spacing: 1px;
+	}
+
+	input.poem-name {
+		width: 100%;
+		height: 48px;
+		margin-bottom: 7px;
+	}
+
+	.poem-author,
+	.poem-date {
+		font-size: 12px;
+		color: rgba($blue, 0.4);
+		line-height: 13px;
+	}
+
+	.poem-lines {
+		margin-top: 20px;
+
+		.line {
+
+			&.is-new {
+				.line-text {
+					color: rgba($blue, 0.3);
+				}
+			}
+
+			.line-text {
+				font-size: 20px;
+			}
+
+			.line-break {
+				height: 17px;
+				width: 100%;
+			}
+
+			.line-suggestions {
+				margin-top: 5px;
+				margin-left: 20px;
+
+				.line-suggestion {
+					position: relative;
+					min-height: 14px;
+
+					.choose-suggestion-btn {
+						position: absolute;
+						top: 0px;
+						right: 0px;
+						padding: 2px 4px;
+						font-size: 10px;
+					}
+				}
+
+				input.new-suggestion-text {
+					margin-top: 3px;
+					width: 300px;
+					font-size: 14px;
+					line-height: 14px;
+					color: $blue;
+				}
+			}
+		}
+	}
+
+	.poem-controls {
+		margin-top: 30px;
+
+		.new-line-btn {
+			background: white;
+			color: $blue;
+			border-color: desaturate(lighten($blue, 30%), 20%);
+			padding: 4px 10px;
+		}
+
+		.finalize-poem-btn {
+			display: block;
+			margin-top: 7px;
+		}
+	}
+}

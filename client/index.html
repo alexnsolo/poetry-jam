@@ -1,9 +1,23 @@
 <head>
+	<title>Poetry Jam</title>
 	<base href="/">
+	<link href='https://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
 </head>
 <body ng-app="poetry-jam" ng-strict-di="">
-	<h1>Poetry Jam</h1>
-	<login-buttons></login-buttons>
-
-	<div ui-view></div>
+	<div id="header">
+		<h1 class="app-title">Poetry Jam</h1>
+		<login-buttons></login-buttons>
+	</div>
+	<div id="content">
+		<div ui-view></div>
+	</div>
+	<div id="footer">
+		<div>
+			<span>Made with ❤ by</span>
+			<a href="https://twitter.com/civilframe" target="_blank">Alex Solo</a>
+		</div>
+		<div>
+			<a href="https://github.com/civilframe/poetry-jam" target="_blank">GitHub</a>
+		</div>
+	</div>
 </body>

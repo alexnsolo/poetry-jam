@@ -1,5 +1,8 @@
 <div class="poem-view">
-	<a ui-sref="home">Back to Home</a>
+	<a class="back-link" ui-sref="home">
+		<i class="fa fa-angle-left"></i>
+		<span>Back to Home</span>
+	</a>
 
 	<div class="poem-name" ng-hide="isPoemOwner()">
 		<span>{{poem.name}}</span>
@@ -11,12 +14,15 @@
 			ng-model="poem.name"
 			ng-show="isPoemOwner()">
 
-		<div class="lines-list">
-			<div class="line" ng-repeat="line in lines" ng-switch="line.type">
+	<div class="poem-author">by {{poem.author}}</div>
+	<div class="poem-date">{{poem.createdAt | date}}</div>
+
+		<div class="poem-lines">
+			<div class="line" ng-repeat="line in lines" ng-switch="line.type" ng-class="{'is-new': !line.isFinalized}">
 				<div ng-switch-when="text">
 					<div class="line-text">
 						<span>{{line.text}}</span>
-						<span ng-hide="line.text">(New Line)</span>
+						<span ng-hide="line.text">New Line</span>
 					</div>
 					<div class="line-suggestions" ng-if="!line.isFinalized">
 						<div class="line-suggestion" ng-repeat="suggestion in line.suggestions">
@@ -32,19 +38,27 @@
 									type="text"
 									ng-model="line.$newSuggestionText"
 									on-enter="addSuggestion(line)"
-									placeholder="Suggest a line">
+									placeholder="Make a suggestion">
 						</div>
 					</div>
 				</div>
 
-				<hr class="line-break" ng-switch-when="break">
+				<div class="line-break" ng-switch-when="break"></div>
 			</div>
 		</div>
 
-		<div class="controls" ng-show="isPoemOwner() && !poem.isFinalized">
-			<button class="new-line-btn" ng-click="addNewLine()">Add a New Line</button>
-			<button class="new-line-btn" ng-click="addNewBreak()">Add a Break</button>
-			<br>
-			<button class="finalize-poem-btn" ng-click="finalizePoem()">Finish</button>
+		<div class="poem-controls" ng-show="isPoemOwner() && !poem.isFinalized">
+			<button class="new-line-btn" ng-click="addNewLine()">
+				<i class="fa fa-font"></i>
+				<span>Add a New Line</span>
+			</button>
+			<button class="new-line-btn" ng-click="addNewBreak()">
+				<i class="fa fa-paragraph"></i>
+				<span>Add a Break</span>
+			</button>
+			<button class="finalize-poem-btn" ng-click="finalizePoem()">
+				<i class="fa fa-check"></i>
+				<span>Finish</span>
+			</button>
 		</div>
 </div>

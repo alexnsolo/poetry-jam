@@ -1,19 +1,21 @@
 <div class="home-view">
-	<h1>Poems</h1>
 	<div ng-show="$root.currentUser">
-		<button class="new-poem-btn" ng-click="createNewPoem()" >Write a new Poem</button>
+		<button class="new-poem-btn" ng-click="createNewPoem()">
+			<i class="fa fa-pencil"></i>
+			<span>Write a New Poem</span>
+		</button>
 	</div>
-	<div ng-hide="$root.currentUser">
-		<div>Login to write a new poem.</div>
+	<div class="login-reminder" ng-hide="$root.currentUser">
+		<div>Sign in to write a new poem.</div>
 	</div>
 	<div class="poems-list">
 		<div class="poem" ng-repeat="poem in poems | orderBy:createdAt:true">
 			<a class="poem-name" ui-sref="poem({poemId: poem._id})">
-				<span>"{{poem.name}}"</span>
+				<span ng-show="poem.name">"{{poem.name}}"</span>
 				<span ng-hide="poem.name">(Untitled)</span>
 			</a>
 			<div class="poem-author">by {{poem.author}}</div>
-			<div class="poem-author">on {{poem.createdAt | date}}</div>
+			<div class="poem-date">{{poem.createdAt | date}}</div>
 		</div>
 	</div>
 </div>
