@@ -1,6 +1,7 @@
 angular.module('poetry-jam', [
 	'angular-meteor',
-	'ui.router'
+	'ui.router',
+	'accounts.ui'
 ]);
 
 angular.module('poetry-jam').run(function() {
