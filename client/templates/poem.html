@@ -10,4 +10,18 @@
 		placeholder="Untitled"
 		ng-model="poem.name"
 		ng-show="isPoemOwner()">
+
+		<div class="lines-list">
+			<div class="line" ng-repeat="line in lines" ng-switch="line.type">
+				<div class="line-text" ng-switch-when="text">
+					<span>{{line.text}}</span>
+					<span ng-hide="line-text">(New Line)</span>
+				</div>
+				<hr class="line-break" ng-switch-when="break">
+			</div>
+		</div>
+		<div class="line-controls" ng-show="isPoemOwner()">
+			<button class="new-line-btn" ng-click="addNewLine()">Add a New Line</button>
+			<button class="new-line-btn" ng-click="addNewBreak()">Add a Break</button>
+		</div>
 </div>

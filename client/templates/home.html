@@ -7,9 +7,13 @@
 		<div>Login to write a new poem.</div>
 	</div>
 	<div class="poems-list">
-		<div class="poem" ng-repeat="poem in poems">
-			<a class="poem-name"  ui-sref="poem({poemId: poem._id})">"{{poem.name}}"</a>
+		<div class="poem" ng-repeat="poem in poems | orderBy:createdAt:true">
+			<a class="poem-name" ui-sref="poem({poemId: poem._id})">
+				<span>"{{poem.name}}"</span>
+				<span ng-hide="poem.name">(Untitled)</span>
+			</a>
 			<div class="poem-author">by {{poem.author}}</div>
+			<div class="poem-author">on {{poem.createdAt | date}}</div>
 		</div>
 	</div>
 </div>
