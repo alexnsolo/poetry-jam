@@ -2,11 +2,12 @@
 	<a ui-sref="home">Back to Home</a>
 
 	<div class="poem-name" ng-hide="isPoemOwner()">
-		{{poem.name}}
+		<span>{{poem.name}}</span>
+		<span ng-hide="poem.name">(Untitled)</span>
 	</div>
 	<input class="poem-name"
 		type="text"
+		placeholder="Untitled"
 		ng-model="poem.name"
 		ng-show="isPoemOwner()">
-		
 </div>
