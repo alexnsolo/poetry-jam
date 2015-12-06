@@ -1,0 +1,12 @@
+<div class="poem-view">
+	<a ui-sref="home">Back to Home</a>
+
+	<div class="poem-name" ng-hide="isPoemOwner()">
+		{{poem.name}}
+	</div>
+	<input class="poem-name"
+		type="text"
+		ng-model="poem.name"
+		ng-show="isPoemOwner()">
+		
+</div>

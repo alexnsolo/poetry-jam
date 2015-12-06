@@ -15,6 +15,12 @@ angular.module('poetry-jam').config(function($urlRouterProvider, $stateProvider,
 	$stateProvider
 		.state('home', {
 			url: '/home',
-			templateUrl: 'client/templates/home.html'
+			templateUrl: 'client/templates/home.html',
+			controller: 'HomeCtrl'
+		})
+		.state('poem', {
+			url: '/poem/:poemId',
+			templateUrl: 'client/templates/poem.html',
+			controller: 'PoemCtrl'
 		});
 });

@@ -1,3 +1,15 @@
-<div>
-	Home!
+<div class="home-view">
+	<h1>Poems</h1>
+	<div ng-show="$root.currentUser">
+		<button class="new-poem-btn" ng-click="createNewPoem()" >Write a new Poem</button>
+	</div>
+	<div ng-hide="$root.currentUser">
+		<div>Login to write a new poem.</div>
+	</div>
+	<div class="poems-list">
+		<div class="poem" ng-repeat="poem in poems">
+			<a class="poem-name"  ui-sref="poem({poemId: poem._id})">"{{poem.name}}"</a>
+			<div class="poem-author">by {{poem.author}}</div>
+		</div>
+	</div>
 </div>
