@@ -18,6 +18,10 @@
 	}
 
 	.poems-list {
+		@include bp-small {
+			padding-top: 20px;
+		}
+
 		.poem {
 			margin-bottom: 20px;
 		}
@@ -27,6 +31,10 @@
 			font-family: 'Damion', cursive;
 			font-weight: 100;
 			letter-spacing: 1px;
+
+			@include bp-small {
+				font-size: 32px;
+			}
 		}
 
 		.poem-author,
@@ -35,6 +43,11 @@
 			font-size: 12px;
 			color: rgba($blue, 0.75);
 			line-height: 13px;
+
+			@include bp-small {
+				font-size: 14px;
+				line-height: 15px;
+			}
 		}
 	}
 }
