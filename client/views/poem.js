@@ -1,9 +1,16 @@
-angular.module('poetry-jam').controller('PoemCtrl', function($scope, $rootScope, $stateParams, $meteor) {
-	$scope.$meteorSubscribe('Poem', $stateParams.poemId);
+angular.module('poetry-jam').controller('PoemCtrl', function($scope, $q, $rootScope, $stateParams, $meteor) {
 	$scope.poem = $scope.$meteorObject(Poems, $stateParams.poemId);
-
-	$scope.$meteorSubscribe('Lines', $stateParams.poemId);
 	$scope.lines = $scope.$meteorCollection(Lines);
+
+	$scope.loading = true;
+
+	$q.all([
+		$scope.$meteorSubscribe('Lines', $stateParams.poemId),
+		$scope.$meteorSubscribe('Poem', $stateParams.poemId)
+	])
+		.then(function() {
+			$scope.loading = false;
+		});
 
 	$scope.isPoemOwner = function() {
 		if (!$rootScope.currentUser) {

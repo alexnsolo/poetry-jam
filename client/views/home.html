@@ -5,10 +5,12 @@
 			<span>Write a New Poem</span>
 		</button>
 	</div>
+	
 	<div class="login-reminder" ng-hide="$root.currentUser">
 		<div>Sign in to write a new poem.</div>
 	</div>
-	<div class="poems-list">
+
+	<div class="poems-list" ng-hide="loading">
 		<div class="poem" ng-repeat="poem in poems | orderBy:createdAt:true">
 			<a class="poem-name" ui-sref="poem({poemId: poem._id})">
 				<span ng-show="poem.name">"{{poem.name}}"</span>
@@ -17,5 +19,10 @@
 			<div class="poem-author">by {{poem.author}}</div>
 			<div class="poem-date">{{poem.createdAt | date}}</div>
 		</div>
+	</div>
+
+	<div class="loader" ng-show="loading">
+		<i class="fa fa-spin fa-refresh"></i>
+		<span>Loading</span>
 	</div>
 </div>

@@ -1,6 +1,11 @@
 angular.module('poetry-jam').controller('HomeCtrl', function($scope, $rootScope, $state, $meteor) {
-	$scope.$meteorSubscribe('Poems');
 	$scope.poems = $scope.$meteorCollection(Poems, false);
+
+	$scope.loading = true;
+	$scope.$meteorSubscribe('Poems')
+		.then(function() {
+			$scope.loading = false;
+		});
 
 	$scope.createNewPoem = function() {
 		if (!$rootScope.currentUser) {

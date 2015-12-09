@@ -4,35 +4,42 @@
 		<span>Back to Home</span>
 	</a>
 
-	<div class="poem-name" ng-hide="isPoemOwner()">
-		<span>{{poem.name}}</span>
-		<span ng-hide="poem.name">(Untitled)</span>
+	<div class="poem-body" ng-hide="loading">
+		<div class="poem-name" ng-hide="isPoemOwner()">
+			<span>{{poem.name}}</span>
+			<span ng-hide="poem.name">(Untitled)</span>
+		</div>
+		<input class="poem-name"
+				type="text"
+				placeholder="Untitled"
+				ng-model="poem.name"
+				ng-show="isPoemOwner()">
+
+		<div class="poem-author">by {{poem.author}}</div>
+		<div class="poem-date">{{poem.createdAt | date}}</div>
+
+		<div class="poem-lines">
+			<poem-line ng-repeat="line in lines"></poem-line>
+		</div>
+
+		<div class="poem-controls" ng-show="isPoemOwner() && !poem.isFinalized">
+			<button class="new-line-btn" ng-click="addNewLine()">
+				<i class="fa fa-font"></i>
+				<span>Add a New Line</span>
+			</button>
+			<button class="new-line-btn" ng-click="addNewBreak()">
+				<i class="fa fa-paragraph"></i>
+				<span>Add a Break</span>
+			</button>
+			<button class="finalize-poem-btn" ng-click="finalizePoem()">
+				<i class="fa fa-check"></i>
+				<span>Finish</span>
+			</button>
+		</div>
 	</div>
-	<input class="poem-name"
-			type="text"
-			placeholder="Untitled"
-			ng-model="poem.name"
-			ng-show="isPoemOwner()">
-
-	<div class="poem-author">by {{poem.author}}</div>
-	<div class="poem-date">{{poem.createdAt | date}}</div>
-
-	<div class="poem-lines">
-		<poem-line ng-repeat="line in lines"></poem-line>
-	</div>
-
-	<div class="poem-controls" ng-show="isPoemOwner() && !poem.isFinalized">
-		<button class="new-line-btn" ng-click="addNewLine()">
-			<i class="fa fa-font"></i>
-			<span>Add a New Line</span>
-		</button>
-		<button class="new-line-btn" ng-click="addNewBreak()">
-			<i class="fa fa-paragraph"></i>
-			<span>Add a Break</span>
-		</button>
-		<button class="finalize-poem-btn" ng-click="finalizePoem()">
-			<i class="fa fa-check"></i>
-			<span>Finish</span>
-		</button>
+	
+	<div class="loader" ng-show="loading">
+		<i class="fa fa-spin fa-refresh"></i>
+		<span>Loading</span>
 	</div>
 </div>
